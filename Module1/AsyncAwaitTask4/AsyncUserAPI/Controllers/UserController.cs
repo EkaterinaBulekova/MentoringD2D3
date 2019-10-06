@@ -22,7 +22,7 @@ namespace AsyncUserAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllusers()
+        public async Task<IActionResult> GetAllUsers()
         {
             try
             {
@@ -37,7 +37,7 @@ namespace AsyncUserAPI.Controllers
         }
 
         [HttpGet("{id}", Name = "userById")]
-        public async Task<IActionResult> GetuserById(Guid id)
+        public async Task<IActionResult> GetUserById(Guid id)
         {
             try
             {
@@ -50,6 +50,7 @@ namespace AsyncUserAPI.Controllers
                 }
 
                 var user = users.Single();
+
                 _logger.LogInfo($"Returned user with id: {id}");
                 return Ok(user);
             }
@@ -61,7 +62,7 @@ namespace AsyncUserAPI.Controllers
         }
 
          [HttpPost]
-        public async Task<IActionResult> Createuser([FromBody]User user)
+        public async Task<IActionResult> CreateUser([FromBody]User user)
         {
             try
             {
@@ -88,63 +89,68 @@ namespace AsyncUserAPI.Controllers
             }
         }
 
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Updateuser(Guid id, [FromBody]User user)
-        //{
-        //    //try
-        //    //{
-        //    //    if (user.IsObjectNull())
-        //    //    {
-        //    //        _logger.LogError("user object sent from client is null.");
-        //    //        return BadRequest("user object is null");
-        //    //    }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(Guid id, [FromBody]User user)
+        {
+            try
+            {
+                if (user.IsObjectNull())
+                {
+                    _logger.LogError("user object sent from client is null.");
+                    return BadRequest("user object is null");
+                }
 
-        //    //    if (!ModelState.IsValid)
-        //    //    {
-        //    //        _logger.LogError("Invalid user object sent from client.");
-        //    //        return BadRequest("Invalid model object");
-        //    //    }
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid user object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
 
+                var DbUsers = await _repository.User.GetUserByIdAsync(id);
 
-        //    //    var dbuser = await _repository.User.GetUserByIdAsync(id);
-        //    //    if (dbuser.IsEmptyObject())
-        //    //    {
-        //    //        _logger.LogError($"user with id: {id}, hasn't been found in db.");
-        //    //        return NotFound();
-        //    //    }
+                if (DbUsers.Count == 0)
+                {
+                    _logger.LogError($"user with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+                
+                var DbUser = DbUsers.Single();
 
-        //    //    await _repository.User.UpdateUserAsync(dbuser, user);
+                await _repository.User.UpdateUserAsync(DbUser, DbUser);
 
-        //    //    return NoContent();
-        //    //}
-        //    //catch (Exception ex)
-        //    //{
-        //    //    _logger.LogError($"Something went wrong inside Updateuser action: {ex.Message}");
-        //    //    return StatusCode(500, "Internal server error");
-        //    //}
-        //}
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside Updateuser action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
 
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Deleteuser(Guid id)
-        //{
-        //    try
-        //    {
-        //        var user = await _repository.User.GetUserByIdAsync(id);
-        //        if (user.IsEmptyObject())
-        //        {
-        //            _logger.LogError($"user with id: {id}, hasn't been found in db.");
-        //            return NotFound();
-        //        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(Guid id)
+        {
+            try
+            {
+                var users = await _repository.User.GetUserByIdAsync(id);
 
-        //        await _repository.User.DeleteUserAsync(user);
+                if (users.Count == 0)
+                {
+                    _logger.LogError($"user with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
 
-        //        return NoContent();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError($"Something went wrong inside Deleteuser action: {ex.Message}");
-        //        return StatusCode(500, "Internal server error");
-        //    }
-        //}
+                var user = users.Single();
+
+                await _repository.User.DeleteUserAsync(user);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside Deleteuser action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
 }

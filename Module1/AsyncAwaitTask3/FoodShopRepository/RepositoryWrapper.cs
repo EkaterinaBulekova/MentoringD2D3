@@ -6,7 +6,7 @@ namespace Repository
 {
     public class RepositoryWrapper : IRepositoryWrapper
     {
-        private RepositoryContext _repoContext;
+        private readonly RepositoryContext _repoContext;
         private IProductRepository _product;
         private ICategorytRepository _category;
         private ICartRepository _cart;

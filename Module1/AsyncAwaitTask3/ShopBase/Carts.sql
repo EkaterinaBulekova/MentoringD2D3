@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Carts]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)

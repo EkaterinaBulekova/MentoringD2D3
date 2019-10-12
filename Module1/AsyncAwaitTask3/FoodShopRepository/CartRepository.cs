@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Contracts;
 using Entities.Extensions;
@@ -19,7 +20,7 @@ namespace Repository
         public async Task<IEnumerable<Cart>> GetAllCartsAsync()
         {
             return await FindAll()
-                .OrderBy(x => x.Product.Name)
+                .OrderBy(x => x.CartId)
                 .ToListAsync();
         }
 
@@ -49,7 +50,25 @@ namespace Repository
 
         public async Task<IEnumerable<Cart>> GetCartsByCartIdAsync(string cartId)
         {
-            return await FindByCondition(o => o.CartId == cartId).ToListAsync();
+            return await FindByCondition(o => o.CartId == cartId).Include(c => c.Product).ToListAsync();
+        }
+
+        public async Task AddToCartAsync(string cartId, int productId)
+        {
+            var dbCart = await FindByCondition(c => c.CartId == cartId && c.ProductId == productId).SingleOrDefaultAsync();
+            if (dbCart != null)
+            {
+                var cart = new Cart() { Count = dbCart.Count + 1 };
+                await UpdateCartAsync(dbCart, cart);
+            }
+            else
+                await CreateCartAsync(new Cart() { CartId = cartId, Count = 1, ProductId = productId });
+        }
+
+        public async Task<ShoppingCart> GetCartTotalsAsync(string cartId)
+        {
+            var carts = await FindByCondition(o => o.CartId == cartId).Include(c => c.Product).ToListAsync(); 
+            return new ShoppingCart(carts); 
         }
     }
 }

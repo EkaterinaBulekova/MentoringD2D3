@@ -12,5 +12,7 @@ namespace Contracts
         Task CreateCartAsync(Cart cart);
         Task UpdateCartAsync(Cart dbCart, Cart cart);
         Task DeleteCartAsync(Cart cart);
-    }
+        Task AddToCartAsync(string cartId, int productId);
+        Task<ShoppingCart> GetCartTotalsAsync(string cartId);
+    }    
 }

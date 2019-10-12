@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Contracts;
-using Entities.Extensions;
-using FoodShopDAL.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodShopWeb.Controllers
@@ -13,14 +9,8 @@ namespace FoodShopWeb.Controllers
     [Route("[controller]")]
     public class CategoryController : ControllerBase
     {
-        private ILoggerManager _logger;
-        private IRepositoryWrapper _repository;
-        private IEnumerable<Category> categories = new List<Category>
-            {
-                new Category{ Id = 1, Name = "Category1" },
-                new Category{ Id = 2, Name = "Category2" },
-                new Category{ Id = 3, Name = "Category3" }
-            };
+        private readonly ILoggerManager _logger;
+        private readonly IRepositoryWrapper _repository;
         public CategoryController(ILoggerManager logger, IRepositoryWrapper repository)
         {
             _logger = logger;
@@ -32,12 +22,12 @@ namespace FoodShopWeb.Controllers
         {
             try
             {
-                //var categories = await _repository.Category.GetAllCategoriesAsync();
+                var categories = await _repository.Category.GetAllCategoriesAsync();
                 return Ok(categories);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong inside GetAllusers action: {ex.Message}");
+                _logger.LogError($"Something went wrong inside GetAllCategories action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }

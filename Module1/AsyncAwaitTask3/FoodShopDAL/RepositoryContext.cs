@@ -10,11 +10,27 @@ namespace FoodShopDAL
         {
         }
 
-        public DbSet<Product> Products { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
 
-        public DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
 
-        public DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+
+        //    modelBuilder.Entity<Category>()
+        //       .HasMany(e => e.Products)
+        //       .WithOne(e => e.Category)
+        //       .OnDelete(DeleteBehavior.Cascade);
+
+        //    modelBuilder.Entity<Product>()
+        //        .HasOne(e => e.Category)
+        //        .WithMany(e => e.Products)
+        //        .OnDelete(DeleteBehavior.ClientSetNull);
+
+        //}
 
     }
 }

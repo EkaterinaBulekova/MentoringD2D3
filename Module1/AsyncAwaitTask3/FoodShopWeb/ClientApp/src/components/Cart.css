@@ -1,0 +1,26 @@
+.cart-icon{
+  margin: 5px;
+  background-image: url("../components/cart-icon.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  width: 50px;
+  height: 50px;
+}
+
+.cart-text{
+  margin: 5px;
+  font-weight: bold;
+  display: flex;
+  width: 150px;
+  height: 50px;
+}
+
+.cart{
+  flex-flow: row;
+  display: flex;
+  width: 250px;
+  height: 70px;
+  float: right;
+}
+

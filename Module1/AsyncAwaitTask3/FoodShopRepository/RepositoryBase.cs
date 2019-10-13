@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using FoodShopDAL;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -29,7 +30,12 @@ namespace Repository
 
         public void Create(T entity)
         {
-            this.RepositoryContext.Set<T>().Add(entity);
+           this.RepositoryContext.Set<T>().Add(entity);
+        }
+
+        public void CreateRange(IEnumerable<T> entity)
+        {
+            this.RepositoryContext.Set<T>().AddRange(entity);
         }
 
         public void Update(T entity)
@@ -42,9 +48,16 @@ namespace Repository
             this.RepositoryContext.Set<T>().Remove(entity);
         }
 
+        public void DeleteRange(IEnumerable<T> entity)
+        {
+            this.RepositoryContext.Set<T>().RemoveRange(entity);
+        }        
+        
         public async Task SaveAsync()
         {
             await this.RepositoryContext.SaveChangesAsync();
         }
+
+
     }
 }

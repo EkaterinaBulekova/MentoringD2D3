@@ -10,6 +10,8 @@ namespace Repository
         private IProductRepository _product;
         private ICategorytRepository _category;
         private ICartRepository _cart;
+        private IOrderRepository _order;
+        private IOrderDetailRepository _orderDetail;
 
         public IProductRepository Product
         {
@@ -49,6 +51,33 @@ namespace Repository
                 return _cart;
             }
         }
+
+        public IOrderRepository Order
+        {
+            get
+            {
+                if (_order == null)
+                {
+                    _order = new OrderRepository(_repoContext);
+                }
+
+                return _order;
+            }
+        }
+
+        public IOrderDetailRepository OrderDetail
+        {
+            get
+            {
+                if (_orderDetail == null)
+                {
+                    _orderDetail = new OrderDetailRepository(_repoContext);
+                }
+
+                return _orderDetail;
+            }
+        }
+
 
         public RepositoryWrapper(RepositoryContext repositoryContext)
         {

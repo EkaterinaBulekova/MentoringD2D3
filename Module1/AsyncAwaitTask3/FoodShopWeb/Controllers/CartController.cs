@@ -28,8 +28,18 @@ namespace FoodShopWeb.Controllers
         {
             try
             {
-                var cart = new ShoppingCart(await _repository.Cart.GetCartsByCartIdAsync(id));
-                return new JsonResult(cart);
+                var carts = await _repository.Cart.GetCartsByCartIdAsync(id);
+                ShoppingCart cart;
+
+                if (carts.Any())
+                {
+                    cart = new ShoppingCart(carts);
+                }
+                else
+                {
+                    cart = new ShoppingCart(new List<Cart>());
+                }
+                return Ok(cart);
             }
             catch (Exception ex)
             {
@@ -44,8 +54,7 @@ namespace FoodShopWeb.Controllers
             try
             {
                 var carts = await _repository.Cart.GetCartsByCartIdAsync(cartId);
-                var json = new JsonResult(carts);
-                return  json;
+                return  Ok(carts);
             }
             catch (Exception ex)
             {
@@ -55,13 +64,13 @@ namespace FoodShopWeb.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Post([FromBody]NewCart newCart)
+        public async Task<IActionResult> AddNewCartDetail([FromBody]NewCart newCart)
         {
             try
             {
                 await _repository.Cart.AddToCartAsync(newCart.CartId, newCart.ProductId);
-                var cart = new ShoppingCart(await _repository.Cart.GetCartsByCartIdAsync(newCart.CartId));
-                return Ok(cart);
+                var shoppingCart = new ShoppingCart(await _repository.Cart.GetCartsByCartIdAsync(newCart.CartId));
+                return Ok(shoppingCart);
             }
             catch (Exception ex)
             {
@@ -71,14 +80,13 @@ namespace FoodShopWeb.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete([FromBody]DeletedCart cart)
+        public async Task<IActionResult> RemoveProductFromCart([FromBody]DeletedCart cart)
         {
             try
             {
                 var deletedcart = await _repository.Cart.GetCartByIdAsync(cart.Id);
                 await _repository.Cart.DeleteCartAsync(deletedcart.SingleOrDefault());
                 var shoppingcart = new ShoppingCart(await _repository.Cart.GetCartsByCartIdAsync(cart.CartId));
-
                 return Ok(shoppingcart);
             }
             catch (Exception ex)

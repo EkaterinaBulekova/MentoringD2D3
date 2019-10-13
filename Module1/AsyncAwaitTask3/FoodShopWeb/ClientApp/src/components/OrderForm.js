@@ -8,42 +8,38 @@ const OrderForm = (props) => {
         <Col md={6}>
           <FormGroup>
             <Label for="name">Name</Label>
-            <Input type="text" name="name" id="Name" placeholder="enter your name" />
+            <Input type="text" name="name" id="name" placeholder="enter your name" required/>
           </FormGroup>
         </Col>
         <Col md={6}>
-          <FormGroup>
-            <Label for="email">Email</Label>
-            <Input type="email" name="email" id="Email" placeholder="with a placeholder" />
-          </FormGroup>
+        <FormGroup>
+          <Label for="phone">Phone</Label>
+          <Input type="phone" name="phone" id="phone" placeholder="enter your phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required/>
+        </FormGroup>
         </Col>
       </Row>
       <FormGroup>
-        <Label for="phone">Phone</Label>
-        <Input type="phone" name="phone" id="Phone" placeholder="enter your phone"/>
-      </FormGroup>
-      <FormGroup>
         <Label for="address">Address</Label>
-        <Input type="text" name="address" id="Address" placeholder="enter your address"/>
+        <Input type="text" name="address" id="address" placeholder="enter your address" required/>
       </FormGroup>
       <Row form>
         <Col md={6}>
           <FormGroup>
-            <Label for="exampleCity">City</Label>
-            <Input type="text" name="city" id="exampleCity"/>
+            <Label for="city">City</Label>
+            <Input type="text" name="city" id="city" required/>
           </FormGroup>
         </Col>
         <Col md={4}>
           <FormGroup>
-            <Label for="exampleState">State</Label>
-            <Input type="text" name="state" id="exampleState"/>
+            <Label for="State">State</Label>
+            <Input type="text" name="state" id="state"  required/>
           </FormGroup>
         </Col>
         <Col md={2}>
           <FormGroup>
-            <Label for="exampleZip">Zip</Label>
-            <Input type="text" name="zip" id="exampleZip"/>
-          </FormGroup>  
+            <Label for="zip">Zip</Label>
+            <Input type="text" name="zip" id="zip" required/>
+          </FormGroup>
         </Col>
       </Row>
       <Button color="primary">Order</Button>

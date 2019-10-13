@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-import ModalExample from './Order';
+import Order from './Order';
 
 export class CartsList extends Component {
     static displayName = CartsList.name;
@@ -45,7 +45,7 @@ export class CartsList extends Component {
               <td>Total</td>
               <td>{cartCount}</td>
               <td>{cartPrice}</td>
-              <td><ModalExample buttonLabel="Order" className="order"/></td>
+              <td><Order buttonLabel="Order" className="order" cartId={this.props.cartId}/></td>
             </tr>
         </tbody>
       </table>

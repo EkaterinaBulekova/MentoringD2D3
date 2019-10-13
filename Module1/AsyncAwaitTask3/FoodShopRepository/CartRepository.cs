@@ -70,5 +70,11 @@ namespace Repository
             var carts = await FindByCondition(o => o.CartId == cartId).Include(c => c.Product).ToListAsync(); 
             return new ShoppingCart(carts); 
         }
+
+        public async Task DeleteCartsRangeAsync(IEnumerable<Cart> carts)
+        {
+            DeleteRange(carts);
+            await SaveAsync();
+        }
     }
 }

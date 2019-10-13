@@ -13,10 +13,8 @@ namespace FoodShopDAL.Models
             this.Products = new HashSet<Product>();
         }
         [Key]
-        [DisplayName("Category ID")]
         public int Id { get; set; }
 
-        [DisplayName("Category")]
         [StringLength(15)]
         public string Name { get; set; }
 

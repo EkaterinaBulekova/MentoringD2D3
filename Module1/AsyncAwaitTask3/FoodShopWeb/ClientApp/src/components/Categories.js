@@ -36,7 +36,6 @@ export class CategoryMenu extends Component {
     async populateCategoriesData() {
         const response = await fetch('category');
         const data = await response.json();
-        console.log(data);
         this.setState({ categories: data, loading: false });
     }
 }

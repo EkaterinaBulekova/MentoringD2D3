@@ -9,11 +9,6 @@ namespace FoodShopDAL.Models
     [Table("Products")]
     public class Product : IEntity
     {
-        //public Product()
-        //{
-        //    this.Carts = new HashSet<Cart>();
-        //}
-
         [Key]
         public int Id { get; set; }
 
@@ -29,8 +24,5 @@ namespace FoodShopDAL.Models
         public decimal Price { get; set; }
 
         public virtual Category Category { get; set; }
-
-       // public virtual ICollection<Cart> Carts { get; set; }
-
     }
 }

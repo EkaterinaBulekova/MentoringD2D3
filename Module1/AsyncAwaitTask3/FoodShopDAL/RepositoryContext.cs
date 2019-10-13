@@ -16,21 +16,8 @@ namespace FoodShopDAL
 
         public virtual DbSet<Cart> Carts { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
+        public virtual DbSet<Order> Orders { get; set; }
 
-        //    modelBuilder.Entity<Category>()
-        //       .HasMany(e => e.Products)
-        //       .WithOne(e => e.Category)
-        //       .OnDelete(DeleteBehavior.Cascade);
-
-        //    modelBuilder.Entity<Product>()
-        //        .HasOne(e => e.Category)
-        //        .WithMany(e => e.Products)
-        //        .OnDelete(DeleteBehavior.ClientSetNull);
-
-        //}
-
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

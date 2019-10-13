@@ -3,7 +3,6 @@ import { ProductsList, } from './ProductsList';
 
 export const ProductsPage = props => {
      var cartId = localStorage.getItem('cartId');
-     console.log(cartId);
      if (!cartId) {
        initializeCartId();
        cartId = localStorage.getItem('cartId');

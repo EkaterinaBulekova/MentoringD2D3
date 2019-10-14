@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSitesDownloader", "WebSitesDownloader\WebSitesDownloader.csproj", "{E5C0799D-C3E0-4EEA-8723-F8E0E9B3BDB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteDownloaderAPI", "WebSiteDownloaderAPI\WebSiteDownloaderAPI.csproj", "{52B5C616-D3FB-4138-8671-EC28A4D0802A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5C0799D-C3E0-4EEA-8723-F8E0E9B3BDB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C0799D-C3E0-4EEA-8723-F8E0E9B3BDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C0799D-C3E0-4EEA-8723-F8E0E9B3BDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C0799D-C3E0-4EEA-8723-F8E0E9B3BDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52B5C616-D3FB-4138-8671-EC28A4D0802A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52B5C616-D3FB-4138-8671-EC28A4D0802A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52B5C616-D3FB-4138-8671-EC28A4D0802A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52B5C616-D3FB-4138-8671-EC28A4D0802A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CD81632-8E46-478B-8EA9-A109FB2857B5}
+	EndGlobalSection
+EndGlobal

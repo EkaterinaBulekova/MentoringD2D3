@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionTransformator", "ExpressionTransformator\ExpressionTransformator.csproj", "{230E9AAE-0B45-4DF1-8A19-FAB2362B9FEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionTransformatorTest", "ExpressionTransformator.Test\ExpressionTransformatorTest.csproj", "{8927BACA-17D3-4BAE-8A67-1E0ABED43864}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{230E9AAE-0B45-4DF1-8A19-FAB2362B9FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{230E9AAE-0B45-4DF1-8A19-FAB2362B9FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{230E9AAE-0B45-4DF1-8A19-FAB2362B9FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{230E9AAE-0B45-4DF1-8A19-FAB2362B9FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8927BACA-17D3-4BAE-8A67-1E0ABED43864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8927BACA-17D3-4BAE-8A67-1E0ABED43864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8927BACA-17D3-4BAE-8A67-1E0ABED43864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8927BACA-17D3-4BAE-8A67-1E0ABED43864}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D08DBBC4-0F26-40B1-8390-6A2362F5A67B}
+	EndGlobalSection
+EndGlobal

@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionTransformator", "ExpressionTransformator\ExpressionTransformator.csproj", "{230E9AAE-0B45-4DF1-8A19-FAB2362B9FEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressionTransformator", "ExpressionTransformator\ExpressionTransformator.csproj", "{230E9AAE-0B45-4DF1-8A19-FAB2362B9FEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionTransformatorTest", "ExpressionTransformator.Test\ExpressionTransformatorTest.csproj", "{8927BACA-17D3-4BAE-8A67-1E0ABED43864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressionTransformatorTest", "ExpressionTransformator.Test\ExpressionTransformatorTest.csproj", "{8927BACA-17D3-4BAE-8A67-1E0ABED43864}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionMapper", "ExpressionMapper\ExpressionMapper.csproj", "{CF12EF33-1C1D-45EA-A836-400CD7749DD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionMapper.Tests", "ExpressionMapper.Tests\ExpressionMapper.Tests.csproj", "{D3E46C01-C424-43EF-9C6E-FB9C0F151A3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{8927BACA-17D3-4BAE-8A67-1E0ABED43864}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8927BACA-17D3-4BAE-8A67-1E0ABED43864}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8927BACA-17D3-4BAE-8A67-1E0ABED43864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF12EF33-1C1D-45EA-A836-400CD7749DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF12EF33-1C1D-45EA-A836-400CD7749DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF12EF33-1C1D-45EA-A836-400CD7749DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF12EF33-1C1D-45EA-A836-400CD7749DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3E46C01-C424-43EF-9C6E-FB9C0F151A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3E46C01-C424-43EF-9C6E-FB9C0F151A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3E46C01-C424-43EF-9C6E-FB9C0F151A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3E46C01-C424-43EF-9C6E-FB9C0F151A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

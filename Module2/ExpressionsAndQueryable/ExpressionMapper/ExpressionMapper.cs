@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace ExpressionMapper
 {
-    public sealed class ExpressionMapper<TOut> : IMapper<TOut>
+    public class ExpressionMapper<TOut> : IMapper<TOut>
     {
         private readonly Dictionary<Type, Func<object, TOut>> _converters;
         private readonly ConstructorInfo _outConstructor;

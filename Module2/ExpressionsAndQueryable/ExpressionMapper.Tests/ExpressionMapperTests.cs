@@ -5,38 +5,38 @@ namespace ExpressionMapper.Test
     [TestClass]
     public class ExpressionMapperTests
     {
-        public class Foo
+        public class Source
         {
-            public int a { get; set; }
-            public string b { get; set; }
-            public string c { get; set; }
+            public int A { get; set; }
+            public string B { get; set; }
+            public string C { get; set; }
 
             public override string ToString()
             {
-                return $"Class Foo  A: {a}, B: {b}, C: {c}";
+                return $"Source  A: {A}, B: {B}, C: {C}";
             }
         }
-        public class Bar
+        public class Target
         {
-            public int a { get; set; }
-            public string b { get; set; }
-            public string d { get; set; }
+            public int A { get; set; }
+            public string B { get; set; }
+            public string D { get; set; }
 
             public override string ToString()
             {
-                return $"Class Bar  A: {a}, B: {b}, D: {d}";
+                return $"Target  A: {A}, B: {B}, D: {D}";
             }
         }
 
         [TestMethod]
         public void ExpressionMapperMapFooToBar()
         {
-            var mapGenerator = new ExpressionMapper<Bar>();
-            var source = new Foo()
+            var mapGenerator = new ExpressionMapper<Target>();
+            var source = new Source()
             {
-                a = 5,
-                b = "text",
-                c = "test1"
+                A = 5,
+                B = "text1",
+                C = "text2"
             };
             
             var result = mapGenerator.Map(source);
@@ -44,9 +44,9 @@ namespace ExpressionMapper.Test
             System.Console.WriteLine(source);
             System.Console.WriteLine(result);
 
-            Assert.AreEqual(source.a, result.a);
-            Assert.AreEqual(source.b, result.b);
-            Assert.IsNull(result.d);
+            Assert.AreEqual(source.A, result.A);
+            Assert.AreEqual(source.B, result.B);
+            Assert.IsNull(result.D);
         }
     }
 }

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressionTransformator.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressionMapper", "ExpressionMapper\ExpressionMapper.csproj", "{CF12EF33-1C1D-45EA-A836-400CD7749DD8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressionMapper.Tests", "ExpressionMapper.Tests\ExpressionMapper.Tests.csproj", "{D3E46C01-C424-43EF-9C6E-FB9C0F151A3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressionMapperTests", "ExpressionMapper.Tests\ExpressionMapperTests.csproj", "{D3E46C01-C424-43EF-9C6E-FB9C0F151A3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework", "Homework\Homework.csproj", "{4B096486-7457-4911-8280-7BA7A2BB45A0}"
 EndProject

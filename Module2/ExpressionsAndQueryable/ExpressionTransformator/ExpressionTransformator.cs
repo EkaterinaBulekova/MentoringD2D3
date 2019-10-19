@@ -13,8 +13,9 @@ namespace ExpressionTransformator
     }
     public class ExpressionTransformator : ExpressionVisitor
     {
+        private const string NumberOne = "1";
 
-        public int indent = 0;
+        private int indent = 0;
 
         private Dictionary<string, int> replacers;
 
@@ -66,42 +67,44 @@ namespace ExpressionTransformator
                 : node;
             if(IsDecrement(newNode)) return base.Visit(Expression.Decrement(newNode.Left));
             if(IsIncrement(newNode)) return base.Visit(Expression.Increment(newNode.Left));
+
             return base.VisitBinary(newNode);
         }
 
-        public bool IsIncrement(BinaryExpression node)
+        private bool IsIncrement(BinaryExpression node)
         {
             return (_options == TrancformationOptions.IncrementDecrement || _options == TrancformationOptions.All)
                 && node.Right.NodeType == ExpressionType.Constant
                 && node.NodeType == ExpressionType.Add
-                && node.Right.ToString() == "1";
+                && node.Right.ToString() == NumberOne;
         }
 
-        public bool IsDecrement(BinaryExpression node)
+        private bool IsDecrement(BinaryExpression node)
         {
             return (_options == TrancformationOptions.IncrementDecrement || _options == TrancformationOptions.All)
                 && node.Right.NodeType == ExpressionType.Constant
                 && node.NodeType == ExpressionType.Subtract
-                && node.Right.ToString() == "1";
+                && node.Right.ToString() == NumberOne;
         }
 
-        public bool IsNeedReplace(Expression node)
+        private bool IsNeedReplace(Expression node)
         {
             return (_options == TrancformationOptions.ReplaceParametrs || _options == TrancformationOptions.All)
                 && node.NodeType == ExpressionType.Parameter;
         }
 
-        public Expression ReplaceParameter(Expression parameter)
+        private Expression ReplaceParameter(Expression parameter)
         {
             if (replacers != null)
             {
                 var par = parameter as ParameterExpression;
-                var val = replacers[par.Name];
-                if (val != 0)
+                if (replacers.ContainsKey(par.Name))
                 {
+                    var val = replacers[par.Name];
                     return Expression.Constant(val);
                 }
             }
+
             return parameter;
         }
     }

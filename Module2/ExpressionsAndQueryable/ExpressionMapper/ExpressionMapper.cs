@@ -12,6 +12,8 @@ namespace ExpressionMapper
         private readonly ConstructorInfo _outConstructor;
         private readonly Dictionary<string, PropertyInfo> _outProperties;
         private readonly Type _outType;
+        private readonly ParameterExpression _outInstance;
+
 
         public ExpressionMapper()
         {
@@ -20,6 +22,7 @@ namespace ExpressionMapper
             _outType = typeof(TOut);
             _outProperties = _outType.GetProperties().ToDictionary(p => p.Name);
             _outConstructor = _outType.GetConstructor(Array.Empty<Type>());
+            _outInstance = Expression.Variable(_outType, "outInstance");
 
             if (_outConstructor == null)
             {
@@ -44,34 +47,53 @@ namespace ExpressionMapper
         private Func<object, TOut> BuildConverter(Type sourceType)
         {
             var parameter = Expression.Parameter(typeof(object), "source");
+            var body = BuildBody(sourceType, parameter);
 
+            return Expression.Lambda<Func<object, TOut>>(body, parameter).Compile();
+        }
+
+        private BlockExpression BuildBody(Type sourceType, Expression parameter)
+        {
             var sourceInstance = Expression.Variable(sourceType, "typedSource");
-            var outInstance = Expression.Variable(_outType, "outInstance");
+            var expressions = GetExpressions(sourceType, parameter, sourceInstance);
 
-            var expressions = new List<Expression>
+            return Expression.Block(new[] { sourceInstance, _outInstance }, expressions);
+        }
+
+        private List<Expression> GetExpressions(Type sourceType, Expression parameter, Expression sourceInstance)
+        {
+            var expressions = CastOutInstance(sourceType, parameter, sourceInstance);
+            expressions.AddRange(CastOutProperties(sourceType, sourceInstance));
+            expressions.Add(_outInstance);
+
+            return expressions;
+        }
+
+        private List<Expression> CastOutInstance(Type sourceType, Expression parameter, Expression sourceInstance)
+        {
+            return new List<Expression>
             {
                 Expression.Assign(sourceInstance, Expression.Convert(parameter, sourceType)),
-                Expression.Assign(outInstance, Expression.New(_outConstructor))
+                Expression.Assign(_outInstance, Expression.New(_outConstructor))
             };
+        }
 
-            var sourceProperties = sourceType.GetProperties();
-            for (var i = 0; i < sourceProperties.Length; i++)
-            {
-                var sourceProperty = sourceProperties[i];
+        private IEnumerable<Expression> CastOutProperties(Type sourceType, Expression sourceInstance)
+        {
+            return GetCommonProperties(sourceType)
+                .Select(property => CastProperty(sourceInstance, property));
+        }
 
-                if (_outProperties.TryGetValue(sourceProperty.Name, out var outProperty))
-                {
-                    var sourceValue = Expression.Property(sourceInstance, sourceProperty);
-                    var outValue = Expression.Property(outInstance, outProperty);
+        private Expression CastProperty(Expression sourceInstance, PropertyInfo sourceProp)
+        {
+            return Expression.Assign(
+                    Expression.Property(_outInstance, _outProperties[sourceProp.Name]),
+                    Expression.Property(sourceInstance, sourceProp));
+        }
 
-                    expressions.Add(Expression.Assign(outValue, sourceValue));
-                }
-            }
-
-            expressions.Add(outInstance);
-
-            var body = Expression.Block(new[] { sourceInstance, outInstance }, expressions);
-            return Expression.Lambda<Func<object, TOut>>(body, parameter).Compile();
+        private IEnumerable<PropertyInfo> GetCommonProperties(Type sourceType)
+        {
+            return sourceType.GetProperties().Where(sourceProp => _outProperties.ContainsKey(sourceProp.Name));
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace PowerManager
 {
-    public class PowerManager
+    public class PowerManager : IPowerManager
     {
         const uint STATUS_SUCCESS = 0;
 
@@ -17,7 +17,7 @@ namespace PowerManager
                     uint nOutputBufferSize);
 
         [DllImport("Powrprof.dll", SetLastError = true)]
-        static extern uint SetSuspendState(bool hibernate, bool forceCritical, bool disableWakeEvent);
+        static extern bool SetSuspendState(bool hibernate, bool forceCritical, bool disableWakeEvent);
 
         private T GetPowerInformation<T>(POWER_INFORMATION_LEVEL infoLevel)
         {
@@ -73,7 +73,7 @@ namespace PowerManager
             return lastSleepTimeInSeconds;
         }
 
-        public long GetLastWakeTime() 
+        public long GetLastWakeTime()
         {
             long lastWakeTimeInSeconds = GetPowerInformation<long>(POWER_INFORMATION_LEVEL.LastWakeTime) / 10000000;
 
@@ -98,12 +98,12 @@ namespace PowerManager
         {
             return ManageHibernationFile(false);
         }
-        public uint Hibernate()
+        public bool Hibernate()
         {
             return SetSuspendState(true, false, false);
         }
 
-        public uint Sleep()
+        public bool Sleep()
         {
             return SetSuspendState(false, false, false);
         }

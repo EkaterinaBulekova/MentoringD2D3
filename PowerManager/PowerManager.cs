@@ -4,6 +4,10 @@ using System.Runtime.InteropServices;
 
 namespace PowerManager
 {
+    [ComVisible(true)]
+    [Guid("7ED99812-85C2-4D21-BD96-8660EFC2169C")]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ProgId("PowerManager.PowerManager")]
     public class PowerManager : IPowerManager
     {
         const uint STATUS_SUCCESS = 0;

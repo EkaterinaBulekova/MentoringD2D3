@@ -1,2 +1,0 @@
-sc stop FileWorkerService
-pause

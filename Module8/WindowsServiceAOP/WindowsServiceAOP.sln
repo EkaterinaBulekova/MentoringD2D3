@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsServiceScanner", "WindowsServiceScanner\WindowsServiceScanner.csproj", "{94A6F4DF-94C2-4EB9-9C2B-3732885F65CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingService", "LoggingService\LoggingService.csproj", "{2487C1D0-517A-4461-8D81-DCD653BBD934}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingDynamicProxy", "LoggingDynamicProxy\LoggingDynamicProxy.csproj", "{C18F72D4-00D0-410F-A0A4-09F530AC6675}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingPostSharpRewriting", "LoggingPostSharpRewriting\LoggingPostSharpRewriting.csproj", "{B55E1288-85C1-4903-A637-86371016859B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilitiesService", "UtilitiesService\UtilitiesService.csproj", "{89FD250F-3826-4061-B282-897E1B4A4C0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImgScanerService", "ImgScanerService\ImgScanerService.csproj", "{BF2E6DCE-A8C2-4D24-AF1F-A6CADDF93F32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94A6F4DF-94C2-4EB9-9C2B-3732885F65CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A6F4DF-94C2-4EB9-9C2B-3732885F65CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A6F4DF-94C2-4EB9-9C2B-3732885F65CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A6F4DF-94C2-4EB9-9C2B-3732885F65CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2487C1D0-517A-4461-8D81-DCD653BBD934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2487C1D0-517A-4461-8D81-DCD653BBD934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2487C1D0-517A-4461-8D81-DCD653BBD934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2487C1D0-517A-4461-8D81-DCD653BBD934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C18F72D4-00D0-410F-A0A4-09F530AC6675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18F72D4-00D0-410F-A0A4-09F530AC6675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18F72D4-00D0-410F-A0A4-09F530AC6675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18F72D4-00D0-410F-A0A4-09F530AC6675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B55E1288-85C1-4903-A637-86371016859B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B55E1288-85C1-4903-A637-86371016859B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B55E1288-85C1-4903-A637-86371016859B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B55E1288-85C1-4903-A637-86371016859B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89FD250F-3826-4061-B282-897E1B4A4C0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89FD250F-3826-4061-B282-897E1B4A4C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89FD250F-3826-4061-B282-897E1B4A4C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89FD250F-3826-4061-B282-897E1B4A4C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF2E6DCE-A8C2-4D24-AF1F-A6CADDF93F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF2E6DCE-A8C2-4D24-AF1F-A6CADDF93F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF2E6DCE-A8C2-4D24-AF1F-A6CADDF93F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF2E6DCE-A8C2-4D24-AF1F-A6CADDF93F32}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1564945-34A6-4D67-816E-996A9CE31224}
+	EndGlobalSection
+EndGlobal

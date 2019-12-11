@@ -1,0 +1,2 @@
+for %%A in (..\bin\Debug\ScanService.exe) DO set P=%%~fA
+sc create ScanService binPath="%P% -props:inputDirs=C:\ScanService\inputs\1;C:\ScanService\inputs\2|scanInterval=7000|outputsDir=C:\ScanService\out\|logPath=C:\ScanService\scannerservice.log|CodeRewritingLogs=true|DynamicProxyLogs=true"
